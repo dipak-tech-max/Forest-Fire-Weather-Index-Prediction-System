@@ -3,9 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Forest Fire Prediction</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            text-align: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            margin: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            display: inline-block;
+            width: 250px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            background: #ff6b6b;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background: #ff4757;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+            opacity: 0.7;
+        }
+    </style>
 </head>
+
 <body>
-    <center><h1>Forest Fire Prediction welcome to home page</h1></center>
+
+    <!-- Header -->
+    <header>
+        <h1>🔥 Forest Fire Prediction System</h1>
+        <p>Predict fire risk using Machine Learning</p>
+        <button onclick="location.href='/predictdata'">Try Prediction</button>
+    </header>
+
+    <!-- Features -->
+    <div class="container">
+        <div class="card">
+            <h3>📊 Data Driven</h3>
+            <p>Uses environmental data to predict fire risk accurately.</p>
+        </div>
+
+        <div class="card">
+            <h3>🤖 ML Model</h3>
+            <p>Built using Scikit-learn with optimized performance.</p>
+        </div>
+
+        <div class="card">
+            <h3>🌐 Web App</h3>
+            <p>Flask-based deployment with interactive UI.</p>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Fast Prediction</h3>
+            <p>Get instant fire risk results in seconds.</p>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="container">
+        <h2>About Project</h2>
+        <p>
+            This project predicts the probability of forest fires based on factors like temperature,
+            humidity, wind speed, and more. It demonstrates a complete Machine Learning pipeline 
+            from training to deployment.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made by Dipak Kumar | Machine Learning Project</p>
+    </footer>
+
 </body>
 </html>
