@@ -4,27 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Document</title>
+    <title>Fire Weather Index Prediction</title>
 </head>
 <body>
     <div class="login">
-    <h1>FWI Prediction</h1>
-<!-- Main Input For Receiving Query to our ML -->
-<form action="{{ url_for('predict_datapoint')}}" method="post">
-<input type="text" name="Temperature" placeholder="Temperature" required="required" /><br>
-<input type="text" name="RH" placeholder="RH" required="required" /><br>
-<input type="text" name="Ws" placeholder="Ws" required="required" /><br>
-<input type="text" name="Rain" placeholder="Rain" required="required" /><br>
-<input type="text" name="FFMC" placeholder="FFMC" required="required" /><br>
-<input type="text" name="DMC" placeholder="DMC" required="required" /><br>
-<input type="text" name="ISI" placeholder="ISI" required="required" /><br>
-<input type="text" name="Classes" placeholder="Classes" required="required" /><br>
-<input type="text" name="Region" placeholder="Region" required="required" /><br>
 
-    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-</form>
+        <div class="panel-head">
+            <svg class="flame-mark" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 3c3 5-2 6-2 10 0 2 1.5 3 3 3s3-1.5 3-4c3 2 5 6 5 10a9 9 0 1 1-18 0c0-6 4-8 5-13 1-2 2-4 4-6z"/>
+            </svg>
+            <div>
+                <h1>Fire Weather Index</h1>
+                <p class="subtitle">Enter today's readings to estimate fire danger from current weather and fuel-moisture conditions.</p>
+            </div>
+        </div>
 
-<h2>The FWI PREDICTION IS {{result}}</h2>
+        <div class="divider"></div>
 
+        <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict_datapoint') }}" method="post">
+
+            <div class="field">
+                <label for="Temperature">Temperature <span class="hint">°C</span></label>
+                <input type="text" id="Temperature" name="Temperature" placeholder="e.g. 29" required="required" />
+            </div>
+
+            <div class="field">
+                <label for="RH">Relative Humidity <span class="hint">%</span></label>
+                <input type="text" id="RH" name="RH" placeholder="e.g. 57" required="required" />
+            </div>
+
+            <div class="field">
+                <label for="Ws">Wind Speed <span class="hint">km/h</span></label>
+                <input type="text" id="Ws" name="Ws" placeholder="e.g. 18" required="required" />
+            </div>
+
+            <div class="field">
+                <label for="Rain">Rain <span class="hint">mm</span></label>
+                <input type="text" id="Rain" name="Rain" placeholder="e.g. 0" required="required" />
+            </div>
+
+            <div class="field">
+                <label for="FFMC">FFMC <span class="hint">fine fuel moisture</span></label>
+                <input type="text" id="FFMC" name="FFMC" placeholder="e.g. 84.2" required="required" />
+            </div>
+
+            <div class="field">
+                <label for="DMC">DMC <span class="hint">duff moisture</span></label>
+                <input type="text" id="DMC" name="DMC" placeholder="e.g. 26.1" required="required" />
+            </div>
+
+            <div class="field">
+                <label for="ISI">ISI <span class="hint">initial spread index</span></label>
+                <input type="text" id="ISI" name="ISI" placeholder="e.g. 6.5" required="required" />
+            </div>
+
+            <div class="field">
+                <label for="Classes">Classes <span class="hint">0 = not fire, 1 = fire</span></label>
+                <input type="text" id="Classes" name="Classes" placeholder="0 or 1" required="required" />
+            </div>
+
+            <div class="field full">
+                <label for="Region">Region <span class="hint">0 = Bejaia, 1 = Sidi-Bel Abbes</span></label>
+                <input type="text" id="Region" name="Region" placeholder="0 or 1" required="required" />
+            </div>
+
+            <button type="submit" class="btn">Predict fire danger</button>
+        </form>
+
+        {% if result is defined and result is not none %}
+        <div class="reading">
+            <span class="reading-label">Fire Weather Index reading</span>
+            <span class="reading-value">{{ result }}</span>
+        </div>
+        {% endif %}
+
+    </div>
 </body>
 </html>
