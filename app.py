@@ -8,9 +8,9 @@ app = Flask(__name__)
 
 
 # Load the trained model
-ridge_model=pickle.load(open('C:\\Users\\ASUS\\Desktop\\Model\\Forest_Fire_END_TO_END_PROJECT\\Models\\forest_fire_Ml_Model_ridge_pickle_file','rb'))
+ridge_model=pickle.load(open('Models\\forest_fire_Ml_Model_ridge_pickle_file','rb'))
 
-standard_scaler=pickle.load(open('Forest_Fire_END_TO_END_PROJECT/Models/forest_fire_scaler_pickle_file','rb'))
+standard_scaler=pickle.load(open('Models\\forest_fire_scaler_pickle_file','rb'))
 
 # route for home page
 @app.route('/')
